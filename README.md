@@ -25,7 +25,7 @@ function onRun()
     }
 
     // bind
-    $this->page['input'] = \Input::all();
+    $this->page['input'] = FoobarForm::all();
     $this->page['alert'] = FoobarForm::get_alert();
 }
 ```
@@ -45,7 +45,7 @@ function onStart()
     }
 
     // bind
-    $this['input'] = \Input::all();
+    $this['input'] = FoobarForm::all();
     $this['alert'] = FoobarForm::get_alert();
 }
 ```
