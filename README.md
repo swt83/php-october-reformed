@@ -33,7 +33,7 @@ function onRun()
 }
 ```
 
-When working w/ pages or partials, add this to your page code section:
+When working w/ pages or partials, add this to your code section:
 
 ```php
 use Author\Name\Classes\Forms\FoobarForm
