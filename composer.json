@@ -1,0 +1,27 @@
+{
+    "name": "travis/reformed",
+    "description": "An OctoberCMS form model, assisting in the PRG form pattern.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Scott Travis",
+            "email": "scott.w.travis@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:swt83/php-laravel-reformed.git"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "travis/reformed": "^1.0.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "Travis\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
