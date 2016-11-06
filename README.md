@@ -18,14 +18,14 @@ use Author\Name\Classes\Forms\FoobarForm
 function onRun()
 {
     // if post...
-    if (Request::isMethod('post'))
+    if (\Request::isMethod('post'))
     {
         // redirect
         return FoobarForm::run();
     }
 
     // bind
-    $this->page['input'] = Input::all();
+    $this->page['input'] = \Input::all();
     $this->page['alert'] = FoobarForm::get_alert();
 }
 ```
@@ -38,14 +38,14 @@ use Author\Name\Classes\Forms\FoobarForm
 function onStart()
 {
     // if post...
-    if (Request::isMethod('post'))
+    if (\Request::isMethod('post'))
     {
         // redirect
         return FoobarForm::run();
     }
 
     // bind
-    $this['input'] = Input::all();
+    $this['input'] = \Input::all();
     $this['alert'] = FoobarForm::get_alert();
 }
 ```
