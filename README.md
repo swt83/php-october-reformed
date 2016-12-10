@@ -10,7 +10,7 @@ Normal install via Composer.
 
 We are just using the normal [Reformed](https://github.com/swt83/php-laravel-reformed) model, but to make it work w/ October we need to add some special sauce.
 
-When working w/ components, add this to your component class:
+When working w/ components, add this to your component class (don't bother trying to use the ``onHandleForm()`` method):
 
 ```php
 use Author\Name\Classes\Forms\FoobarForm
