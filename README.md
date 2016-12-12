@@ -18,15 +18,17 @@ use Author\Name\Classes\Forms\FoobarForm
 function onRun()
 {
     // if post...
-    if (\Request::isMethod('post'))
+    if (\Request::isMethod('post') and \Input::get('plugin') == 'myplugin')
     {
         // redirect
         return FoobarForm::run();
     }
 
     // bind
-    $this->page['input'] = FoobarForm::all();
-    $this->page['alert'] = FoobarForm::get_alert();
+    $this->page['myplugin'] = [
+        'input' => FoobarForm::all(),
+        'alert' => FoobarForm::get_alert(),
+    ];
 }
 ```
 
@@ -38,15 +40,17 @@ use Author\Name\Classes\Forms\FoobarForm
 function onStart()
 {
     // if post...
-    if (\Request::isMethod('post'))
+    if (\Request::isMethod('post') and \Input::get('plugin') == 'myplugin')
     {
         // redirect
         return FoobarForm::run();
     }
 
     // bind
-    $this['input'] = FoobarForm::all();
-    $this['alert'] = FoobarForm::get_alert();
+    $this['myplugin'] = [
+        'input' => FoobarForm::all(),
+        'alert' => FoobarForm::get_alert(),
+    ];
 }
 ```
 
@@ -54,25 +58,26 @@ When building your form using Twig, in either a component or a partial, do somet
 
 ```
 {{ form_open() }}
-{% if (alert.msg) %}
-    <div class="alert {{ alert.level }}">
+{{ form_hidden('plugin', 'myplugin') }}
+{% if (myplugin.alert.msg) %}
+    <div class="alert {{ myplugin.alert.level }}">
         <ul>
-        {% for m in alert.msg %}
+        {% for m in myplugin.alert.msg %}
             <li>{{ m }}</li>
         {% endfor %}
         </ul>
     </div>
 {% endif %}
 {{ form_label('first', 'First *') }}
-{{ form_text('first', input.first) }}
+{{ form_text('first', myplugin.input.first) }}
 {{ form_label('last', 'Last *') }}
-{{ form_text('last', input.last) }}
+{{ form_text('last', myplugin.input.last) }}
 {{ form_label('email', 'Email *') }}
-{{ form_text('email', input.email) }}
+{{ form_text('email', myplugin.input.email) }}
 {{ form_label('subject', 'Subject *') }}
-{{ form_text('subject', input.subject) }}
+{{ form_text('subject', myplugin.input.subject) }}
 {{ form_label('message', 'Message *') }}
-{{ form_textarea('message', input.message) }}
+{{ form_textarea('message', myplugin.input.message) }}
 {{ form_submit('Submit') }}
 {{ form_close() }}
 ```
